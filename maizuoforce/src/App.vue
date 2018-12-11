@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <!--首页-->
-    <Films></Films>
+    <!--这是一个坑，根据组件的不同，将内容渲染到页面上，因为router管理对象已经配置给new Vue了-->
+    <router-view></router-view>
     <FootNav></FootNav>
   </div>
 </template>
@@ -9,13 +9,10 @@
 <script>
 // 引入FootNav组件
 import FootNav from "./components/FootNav/index";
-// 引入电影页面组件
-import Films from "./views/films";
 export default {
   name: "App",
   components: {
-    FootNav,
-    Films
+    FootNav
   }
 };
 </script>

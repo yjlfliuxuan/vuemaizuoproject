@@ -2,44 +2,58 @@
 <template>
   <div class="lx-foot">
     <ul>
-      <li>
-        <a href="#" class="footcurrent">
-          <p>
-            <span class="iconfont sz">&#xe600;</span>
-          </p>
-          <p>电影</p>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <p>
-            <span class="iconfont sz">&#xe67f;</span>
-          </p>
-          <p>影院</p>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <p>
-            <span class="iconfont sz">&#xe601;</span>
-          </p>
-          <p>9.9拼团</p>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <p>
-            <span class="iconfont sz">&#xe62e;</span>
-          </p>
-          <p>我的</p>
-        </a>
-      </li>
+      <router-link :to="{name:'films'}" tag="li" active-class="z-act">
+        <p>
+          <span class="iconfont sz">&#xe600;</span>
+        </p>
+        <p>电影</p>
+      </router-link>
+      <router-link :to="{name:'cinema'}" tag="li" active-class="z-act">
+        <p>
+          <span class="iconfont sz">&#xe67f;</span>
+        </p>
+        <p>影院</p>
+      </router-link>
+      <router-link :to="{name:'ping'}" tag="li">
+        <p>
+          <span class="iconfont sz">&#xe601;</span>
+        </p>
+        <p>9.9拼团</p>
+      </router-link>
+      <router-link :to="{name:'center'}" tag="li" active-class="z-act">
+        <p>
+          <span class="iconfont sz">&#xe62e;</span>
+        </p>
+        <p>我的</p>
+      </router-link>
     </ul>
   </div>
 </template>
 <script>
 export default {
   name: "FootNav"
+  // data() {
+  //   return {
+  //     bars: [
+  //       {
+  //         id: "films",
+  //         name: "电影"
+  //       },
+  //       {
+  //         id: "cinema",
+  //         name: "影院"
+  //       },
+  //       {
+  //         id: "ping",
+  //         name: "9.9拼团"
+  //       },
+  //       {
+  //         id: "center",
+  //         name: "我的"
+  //       }
+  //     ]
+  //   };
+  // }
 };
 </script>
 <style lang="scss" scoped>
@@ -53,23 +67,21 @@ export default {
     display: flex;
     li {
       flex: 1;
-      a {
-        text-align: center;
-        line-height: px2rem(39);
-        height: px2rem(39);
-        display: block;
-        color: #797d82;
-        padding-top: px2rem(10);
-        text-decoration: none;
-        p {
-          line-height: px2rem(14);
-          font-size: px2rem(12);
-          .sz {
-            font-size: px2rem(20);
-          }
+      text-align: center;
+      line-height: px2rem(39);
+      height: px2rem(39);
+      display: block;
+      color: #797d82;
+      padding-top: px2rem(10);
+      text-decoration: none;
+      p {
+        line-height: px2rem(14);
+        font-size: px2rem(12);
+        .sz {
+          font-size: px2rem(20);
         }
       }
-      .footcurrent {
+      &.z-act {
         color: #ff5f16;
       }
     }
