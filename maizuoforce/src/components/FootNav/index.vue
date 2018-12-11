@@ -45,8 +45,6 @@ export default {
 <style lang="scss" scoped>
 @import "../../styles/common/px2rem.scss";
 .lx-foot {
-  position: fixed;
-  bottom: px2rem(0);
   background: white;
   width: 100%;
   ul {
