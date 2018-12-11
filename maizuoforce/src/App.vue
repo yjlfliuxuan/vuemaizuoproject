@@ -1,12 +1,17 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
+    <FootNav></FootNav>
   </div>
 </template>
 
 <script>
+// 引入FootNav组件
+import FootNav from "./components/FootNav/index";
 export default {
-  name: "App"
+  name: "App",
+  components: {
+    FootNav
+  }
 };
 </script>
 
