@@ -59,6 +59,7 @@ export default {
 <style lang="scss" scoped>
 @import "../../styles/common/px2rem.scss";
 .lx-foot {
+  flex-shrink: 0;
   background: white;
   width: 100%;
   ul {
