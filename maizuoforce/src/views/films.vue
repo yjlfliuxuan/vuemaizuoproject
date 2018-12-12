@@ -86,7 +86,10 @@ export default {
     return {
       //当前城市
       curCity: "",
-      films: []
+      films: [],
+      pageNum: 1, //当前页码
+      pageSize: 5, //每页条数
+      totalPage: 0 //总页数
     }
   },
   methods: {
@@ -100,11 +103,16 @@ export default {
     },
     //获取影片
     getFilms () {
-      axios.get("/static/api/homepage.json")
+      axios.get("/api/film/list",{
+        params:{
+          pageNum:this.pageNum,
+          pageSize:this.pageSize
+        }
+      })
       .then((response)=>{
         console.log(response);
         let result=response.data;
-        if(result.status==0){
+        if(result.code==0){
           this.films=result.data.films;
         }else{
           alert(result.msg);
