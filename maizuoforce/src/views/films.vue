@@ -57,76 +57,16 @@
     <!-- 列表 -->
     <div class="lx-main">
       <div class="movies">
-        <ul>
+        <ul v-for="(item,index) in films" :key="index" >
           <li class="movieleft"><img
               class="movielogo"
-              src="../images/movie.jpg"
+              :src="item.poster"
             ></li>
           <li class="moviemiddle">
-            <p class="midea"><span class="moviename">海王</span><span class="item">3D</span></p>
-            <p class="see">观众评分<span class="grade">7.2</span></p>
-            <p class="actor">主演：帕特里克·威尔森 妮可·基德曼 杜夫·龙格尔 温子仁 杰森·莫玛 安柏·赫德</p>
-            <p class="times">美国 澳大利亚 | 143分钟</p>
-          </li>
-          <li class="movieright">
-            <p class="buy">购票</p>
-          </li>
-        </ul>
-        <ul>
-          <li class="movieleft"><img
-              class="movielogo"
-              src="../images/movie.jpg"
-            ></li>
-          <li class="moviemiddle">
-            <p class="midea"><span class="moviename">海王</span><span class="item">3D</span></p>
-            <p class="see">观众评分<span class="grade">7.2</span></p>
-            <p class="actor">主演：帕特里克·威尔森 妮可·基德曼 杜夫·龙格尔 温子仁 杰森·莫玛 安柏·赫德</p>
-            <p class="times">美国 澳大利亚 | 143分钟</p>
-          </li>
-          <li class="movieright">
-            <p class="buy">购票</p>
-          </li>
-        </ul>
-        <ul>
-          <li class="movieleft"><img
-              class="movielogo"
-              src="../images/movie.jpg"
-            ></li>
-          <li class="moviemiddle">
-            <p class="midea"><span class="moviename">海王</span><span class="item">3D</span></p>
-            <p class="see">观众评分<span class="grade">7.2</span></p>
-            <p class="actor">主演：帕特里克·威尔森 妮可·基德曼 杜夫·龙格尔 温子仁 杰森·莫玛 安柏·赫德</p>
-            <p class="times">美国 澳大利亚 | 143分钟</p>
-          </li>
-          <li class="movieright">
-            <p class="buy">购票</p>
-          </li>
-        </ul>
-        <ul>
-          <li class="movieleft"><img
-              class="movielogo"
-              src="../images/movie.jpg"
-            ></li>
-          <li class="moviemiddle">
-            <p class="midea"><span class="moviename">海王</span><span class="item">3D</span></p>
-            <p class="see">观众评分<span class="grade">7.2</span></p>
-            <p class="actor">主演：帕特里克·威尔森 妮可·基德曼 杜夫·龙格尔 温子仁 杰森·莫玛 安柏·赫德</p>
-            <p class="times">美国 澳大利亚 | 143分钟</p>
-          </li>
-          <li class="movieright">
-            <p class="buy">购票</p>
-          </li>
-        </ul>
-        <ul>
-          <li class="movieleft"><img
-              class="movielogo"
-              src="../images/movie.jpg"
-            ></li>
-          <li class="moviemiddle">
-            <p class="midea"><span class="moviename">海王</span><span class="item">3D</span></p>
-            <p class="see">观众评分<span class="grade">7.2</span></p>
-            <p class="actor">主演：帕特里克·威尔森 妮可·基德曼 杜夫·龙格尔 温子仁 杰森·莫玛 安柏·赫德</p>
-            <p class="times">美国 澳大利亚 | 143分钟</p>
+            <p class="midea"><span class="moviename">{{item.name}}</span><span class="item">{{item.filmType.name}}</span></p>
+            <p class="see">观众评分<span class="grade">{{item.grade}}</span></p>
+            <p class="actor">主演：{{actorslist(item.actors)}}</p>
+            <p class="times">{{item.nation}} | {{item.runtime}}分钟</p>
           </li>
           <li class="movieright">
             <p class="buy">购票</p>
@@ -139,21 +79,50 @@
 </template>
 <script>
 import Swiper from "swiper";
+import axios from "axios";
 export default {
   name: "films",
   data () {
     return {
       //当前城市
-      curCity: ""
+      curCity: "",
+      films: []
+    }
+  },
+  methods: {
+    //根据百度地图开发平台Api，获取当前城市名称
+    getCityName () {
+      /* eslint-disable*/
+      let myCity = new BMap.LocalCity();
+      myCity.get((result) => {
+        this.curCity = result.name;
+      });
+    },
+    //获取影片
+    getFilms () {
+      axios.get("/static/api/homepage.json")
+      .then((response)=>{
+        console.log(response);
+        let result=response.data;
+        if(result.status==0){
+          this.films=result.data.films;
+        }else{
+          alert(result.msg);
+        }
+      })
+    },
+    //获取主演列表@param {Array} list
+    actorslist (list) {
+     let arr=[];
+     arr=list.map(item=>{
+       return item.name;
+     })
+     return arr.join(" ");
     }
   },
   created () {
-    //获取当前城市名称
-    /* eslint-disable*/
-    let myCity = new BMap.LocalCity();
-    myCity.get((result) => {
-      this.curCity = result.name;
-    });
+    this.getCityName();
+    this.getFilms();
   },
   mounted () {
     new Swiper(".swiper-container", {
