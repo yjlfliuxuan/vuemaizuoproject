@@ -5,6 +5,8 @@ import VueRouter from "vue-router";
 import films from "./views/films.vue";
 import cinema from "./views/cinema.vue";
 import center from "./views/center.vue";
+import NowPlay from './components/NowPlay';
+import SoonPlay from './components/SoonPlay';
 // 插件安装
 vue.use(VueRouter);
 const router = new VueRouter({
@@ -13,7 +15,19 @@ const router = new VueRouter({
             //电影页面
             path: "/films",
             name: "films",
-            component: films
+            component: films,
+            children: [
+                {
+                    path: 'nowPlaying',
+                    name: 'nowPlaying',
+                    component: NowPlay
+                },
+                {
+                    path: 'comingSoon',
+                    name: 'comingSoon',
+                    component: SoonPlay
+                }
+            ]
         },
         {
             //影院页面
@@ -30,7 +44,7 @@ const router = new VueRouter({
         {
             //默认配置
             path: "*",
-            redirect: "/films"
+            redirect: '/films/nowPlaying'
         }
     ]
 })

@@ -46,50 +46,28 @@
         <div></div>
       </div>
       <ul class="lx-nav">
-        <li class="active">正在热映</li>
-        <li>即将上映</li>
+        <li
+          :class="{'z-act': $route.path === '/films/nowPlaying'}"
+          @click="switchList('now')"
+        >正在热映</li>
+        <li
+          :class="{'z-act': $route.path === '/films/comingSoon'}"
+          @click="switchList('soon')"
+        >即将上映</li>
       </ul>
-      <div class="line-bar">
-        <div class="line"></div>
-      </div>
     </div>
     <!-- tab栏 -->
-    <!-- 列表 -->
-    <div class="lx-main">
-      <div class="movies">
-        <ul v-for="(item,index) in films" :key="index" >
-          <li class="movieleft"><img
-              class="movielogo"
-              :src="item.poster"
-            ></li>
-          <li class="moviemiddle">
-            <p class="midea"><span class="moviename">{{item.name}}</span><span class="item">{{item.filmType.name}}</span></p>
-            <p class="see">观众评分<span class="grade">{{item.grade}}</span></p>
-            <p class="actor">主演：{{actorslist(item.actors)}}</p>
-            <p class="times">{{item.nation}} | {{item.runtime}}分钟</p>
-          </li>
-          <li class="movieright">
-            <p class="buy">购票</p>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <!-- 列表 -->
+    <router-view></router-view>
   </div>
 </template>
 <script>
 import Swiper from "swiper";
-import axios from "axios";
 export default {
   name: "films",
   data () {
     return {
       //当前城市
-      curCity: "",
-      films: [],
-      pageNum: 1, //当前页码
-      pageSize: 5, //每页条数
-      totalPage: 0 //总页数
+      curCity: ""
     }
   },
   methods: {
@@ -101,36 +79,23 @@ export default {
         this.curCity = result.name;
       });
     },
-    //获取影片
-    getFilms () {
-      axios.get("/api/film/list",{
-        params:{
-          pageNum:this.pageNum,
-          pageSize:this.pageSize
-        }
-      })
-      .then((response)=>{
-        console.log(response);
-        let result=response.data;
-        if(result.code==0){
-          this.films=result.data.films;
-        }else{
-          alert(result.msg);
-        }
-      })
-    },
-    //获取主演列表@param {Array} list
-    actorslist (list) {
-     let arr=[];
-     arr=list.map(item=>{
-       return item.name;
-     })
-     return arr.join(" ");
+    /**
+     * 切换路由
+     */
+    switchList (type) {
+      if (type === 'now') {
+        // this.$router.push('/films/nowPlaying');
+        this.$router.push({
+          name: 'nowPlaying'
+        })
+      } else {
+        this.$router.push('/films/comingSoon');
+      }
     }
   },
+
   created () {
     this.getCityName();
-    this.getFilms();
   },
   mounted () {
     new Swiper(".swiper-container", {
@@ -228,104 +193,11 @@ export default {
       line-height: px2rem(49);
       text-align: center;
       font-size: px2rem(14);
-    }
-    .active {
-      color: #ff5f16;
-    }
-  }
-  .line-bar {
-    width: 50%;
-    .line {
-      width: px2rem(56);
-      height: px2rem(2);
-      background: #ff5f16;
-      margin: 0 auto;
-    }
-  }
-}
-.lx-main {
-  width: 100%;
-  .movies {
-    width: 96%;
-    margin-left: px2rem(15);
-    ul {
-      width: 95.83%;
-      margin-right: px2rem(15);
-      display: flex;
-      li {
-        color: #797d82;
-        height: px2rem(124);
+        &.z-act {
+        color: #ff5f16;
       }
-      .movieleft {
-        width: px2rem(66);
-        height: px2rem(124);
-        display: flex;
-        img {
-          align-self: center;
-          width: px2rem(66);
-          height: px2rem(91);
-        }
-      }
-      .movieright {
-        font-size: px2rem(14);
-        display: flex;
-        .buy {
-          align-self: center;
-          width: px2rem(48);
-          height: px2rem(23);
-          line-height: px2rem(23);
-          text-align: center;
-          color: #ff5f16;
-          border: px2rem(1) solid #ff5f16;
-        }
-      }
-      .moviemiddle {
-        width: 64.1%;
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        padding: 0 0 0 px2rem(8);
-        p {
-          height: px2rem(21);
-          line-height: px2rem(21);
-          align-items: center;
-        }
-        .midea {
-          display: flex;
-          justify-content: flex-start;
-          .moviename {
-            font-size: px2rem(16);
-            color: black;
-          }
-          .item {
-            font-size: px2rem(12);
-            color: #fff;
-            background-color: #d2d6dc;
-            margin-left: px2rem(5);
-            line-height: px2rem(14);
-            height: px2rem(14);
-          }
-        }
-        .see {
-          font-size: px2rem(14);
-          .grade {
-            font-size: px2rem(14);
-            color: #ffb232;
-          }
-        }
+    }
 
-        .actor {
-          font-size: px2rem(14);
-          text-overflow: ellipsis;
-          overflow: hidden;
-          white-space: nowrap;
-        }
-        .times {
-          font-size: px2rem(14);
-        }
-      }
-    }
   }
 }
 </style>
