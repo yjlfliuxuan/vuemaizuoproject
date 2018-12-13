@@ -2,44 +2,52 @@
 import vue from "vue";
 import VueRouter from "vue-router";
 // 引入路由组件
-import films from "./views/films.vue";
-import cinema from "./views/cinema.vue";
-import center from "./views/center.vue";
-import NowPlay from './components/NowPlay';
-import SoonPlay from './components/SoonPlay';
 import FilmDetail from './views/FilmDetail.vue';
 // 插件安装
 vue.use(VueRouter);
 const router = new VueRouter({
   routes: [{
-      //电影页面
-      path: "/films",
-      name: "films",
-      component: films,
-      children: [{
-          path: 'nowPlaying',
-          name: 'nowPlaying',
-          component: NowPlay
-        },
-        {
-          path: 'comingSoon',
-          name: 'comingSoon',
-          component: SoonPlay
-        }
-      ]
-    },
-    {
-      //影院页面
-      path: "/cinema",
-      name: "cinema",
-      component: cinema
-    },
-    {
-      //个人中心页面
-      path: "/center",
-      name: "center",
-      component: center
-    },
+        path: '/',
+        component: () => import('./views/home.vue'), //异步路由
+        children: [{
+            path: '',
+            redirect: '/films/nowPlaying'
+          },
+          {
+            // 首页
+            path: 'films',
+            // name: 'films',
+            component: () => import('./views/films.vue'),
+            children: [{
+                path: '',
+                redirect: '/films/nowPlaying'
+              },
+              {
+                path: 'nowPlaying',
+                name: 'nowPlaying',
+                component: () => import('./components/NowPlay/index.vue')
+              },
+              {
+                path: 'comingSoon',
+                name: 'comingSoon',
+                component: () => import('./components/SoonPlay/index.vue')
+              }
+            ]
+          },
+          {
+            // 影院页
+            path: 'cinema',
+            name: 'cinema',
+            component: () => import('./views/cinema.vue')
+          },
+          {
+            // 个人中心页
+            path: 'center',
+            name: 'center',
+            component: () => import('./views/center.vue')
+          }
+        ]
+      },
     {
       //详情页面
       path: "/film/:filmId",

@@ -3,7 +3,7 @@
   <div class="lx-foot">
     <ul>
       <router-link
-        :to="{path:'/films/nowPlaying'}"
+        :to="{path:'/films'}"
         tag="li"
         active-class="z-act"
       >
