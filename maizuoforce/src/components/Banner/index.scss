@@ -1,0 +1,25 @@
+.swiper-container {
+  height: px2rem(210);
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .swiper-pagination-bullet {
+    width: px2rem(10);
+    height: px2rem(10);
+  }
+
+  .swiper-pagination.swiper-pagination-bullets {
+    bottom: px2rem(10);
+    left: 0;
+    width: 96%;
+  }
+
+  .swiper-pagination {
+    position: absolute;
+    text-align: right;
+  }
+
+}

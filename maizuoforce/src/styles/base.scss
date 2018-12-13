@@ -1,14 +1,20 @@
 //项目的基础样式文件
 @import './common/reset.scss';
 @import './common/var.scss';
-html,body{
-    height: 100%;
+@import './common/px2rem.scss';
+
+html,
+body {
+  height: 100%;
+  font-size: px2rem(16);
 }
-#app{
-    height: 100%;
-    display: flex;
-    flex-direction: column;
+
+#app {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
+
 body {
   font-size: 16px;
   width: 16rem;

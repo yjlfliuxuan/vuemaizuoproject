@@ -2,25 +2,40 @@
 <template>
   <div class="lx-foot">
     <ul>
-      <router-link :to="{path:'/films/nowPlaying'}" tag="li" active-class="z-act">
+      <router-link
+        :to="{path:'/films/nowPlaying'}"
+        tag="li"
+        active-class="z-act"
+      >
         <p>
           <span class="iconfont sz">&#xe600;</span>
         </p>
         <p>电影</p>
       </router-link>
-      <router-link :to="{path:'/cinema'}" tag="li" active-class="z-act">
+      <router-link
+        :to="{path:'/cinema'}"
+        tag="li"
+        active-class="z-act"
+      >
         <p>
           <span class="iconfont sz">&#xe67f;</span>
         </p>
         <p>影院</p>
       </router-link>
-      <router-link :to="{path:'/ping'}" tag="li">
+      <router-link
+        :to="{path:'/ping'}"
+        tag="li"
+      >
         <p>
           <span class="iconfont sz">&#xe601;</span>
         </p>
         <p>9.9拼团</p>
       </router-link>
-      <router-link :to="{path:'/center'}" tag="li" active-class="z-act">
+      <router-link
+        :to="{path:'/center'}"
+        tag="li"
+        active-class="z-act"
+      >
         <p>
           <span class="iconfont sz">&#xe62e;</span>
         </p>

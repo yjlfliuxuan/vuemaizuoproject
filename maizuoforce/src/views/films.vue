@@ -1,37 +1,6 @@
 <template>
   <div class="films-list">
-    <!-- 轮播图 -->
-    <div class="swiper-container">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <img src="../images/lunbo.jpg">
-        </div>
-        <div class="swiper-slide">
-          <img src="../images/lunbo1.jpg">
-        </div>
-        <div class="swiper-slide">
-          <img src="../images/lunbo2.jpg">
-        </div>
-        <div class="swiper-slide">
-          <img src="../images/lunbo3.jpg">
-        </div>
-        <div class="swiper-slide">
-          <img src="../images/lunbo4.jpg">
-        </div>
-        <div class="swiper-slide">
-          <img src="../images/lunbo5.jpg">
-        </div>
-        <div class="swiper-slide">
-          <img src="../images/lunbo6.jpg">
-        </div>
-        <div class="swiper-slide">
-          <img src="../images/lunbo7.jpg">
-        </div>
-      </div>
-      <!-- 如果需要分页器 -->
-      <div class="swiper-pagination"></div>
-    </div>
-    <!-- 轮播图 -->
+    <Banner></Banner>
     <!-- 城市定位 -->
     <div class="adress">
       <span>{{curCity}}</span>
@@ -62,6 +31,7 @@
 </template>
 <script>
 import Swiper from "swiper";
+import banner from '../components/Banner/index'
 export default {
   name: "films",
   data () {
@@ -69,6 +39,9 @@ export default {
       //当前城市
       curCity: ""
     }
+  },
+  components: {
+    'Banner': banner
   },
   methods: {
     //根据百度地图开发平台Api，获取当前城市名称
@@ -93,10 +66,6 @@ export default {
       }
     }
   },
-
-  created () {
-    this.getCityName();
-  },
   mounted () {
     new Swiper(".swiper-container", {
       loop: true,
@@ -106,6 +75,10 @@ export default {
         el: ".swiper-pagination"
       }
     });
+  },
+
+  created () {
+    this.getCityName();
   }
 };
 </script>
@@ -116,10 +89,6 @@ export default {
   flex: 1;
   position: relative;
   overflow-y: auto;
-  img {
-    width: 100%;
-    height: 100%;
-  }
   .adress {
     z-index: 10;
     position: absolute;
@@ -141,22 +110,6 @@ export default {
       font-size: px2rem(12);
     }
   }
-}
-.swiper-container {
-  height: px2rem(210);
-}
-.swiper-pagination-bullet {
-  width: px2rem(10);
-  height: px2rem(10);
-}
-.swiper-pagination.swiper-pagination-bullets {
-  bottom: px2rem(10);
-  left: 0;
-  width: 96%;
-}
-.swiper-pagination {
-  position: absolute;
-  text-align: right;
 }
 .tabs {
   position: sticky;
@@ -187,14 +140,14 @@ export default {
     height: px2rem(49);
     display: flex;
     justify-content: space-between;
-    background:white;
+    background: white;
     li {
       width: 50%;
       height: px2rem(49);
       line-height: px2rem(49);
       text-align: center;
       font-size: px2rem(14);
-        &.z-act {
+      &.z-act {
         color: #ff5f16;
       }
     }
