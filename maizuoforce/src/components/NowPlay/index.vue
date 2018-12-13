@@ -31,7 +31,7 @@ export default {
       films: [],
       loadMoreText: '点击，加载下一页',
       pageNum: 1, // 当前页码
-      pageSize: 5, // 每页条数
+      pageSize: 10, // 每页条数
       totalPage: 0 // 总页数
     }
   },
@@ -57,7 +57,7 @@ export default {
         // 判断是否还有更多页
         if (this.pageNum >= this.totalPage) {
           // 没有更多页面
-          this.loadMoreText = '别拉啦，没有更多。';
+          this.loadMoreText = '别拉啦，没有更多了。';
         }
         if (result.code === 0) {
           // this.films = result.data.films;

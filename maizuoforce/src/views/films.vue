@@ -187,6 +187,7 @@ export default {
     height: px2rem(49);
     display: flex;
     justify-content: space-between;
+    background:white;
     li {
       width: 50%;
       height: px2rem(49);
@@ -197,7 +198,6 @@ export default {
         color: #ff5f16;
       }
     }
-
   }
 }
 </style>
