@@ -1,26 +1,34 @@
 <template>
-   <!-- 列表 -->
-    <div class="lx-main">
-      <div class="movies">
-        <ul v-for="(item,index) in films" :key="index" >
-          <li class="movieleft"><img
-              class="movielogo"
-              :src="item.poster"
-            ></li>
-          <li class="moviemiddle">
-            <p class="midea"><span class="moviename">{{item.name}}</span><span class="item">{{item.filmType.name}}</span></p>
-            <p class="see">观众评分<span class="grade">{{item.grade}}</span></p>
-            <p class="actor">主演：{{actorsList(item.actors)}}</p>
-            <p class="times">{{item.nation}} | {{item.runtime}}分钟</p>
-          </li>
-          <li class="movieright">
-            <p class="buy">购票</p>
-          </li>
-        </ul>
-        <div class="load-more" @click="loadMore">{{ loadMoreText }}</div>
-      </div>
+  <!-- 列表 -->
+  <div class="lx-main">
+    <div class="movies">
+      <ul
+        v-for="(item,index) in films"
+        :key="index"
+        @click="goDetail(item)"
+      >
+      <!-- 每个元素是一个对象，将对象传到详情页，可以在详情页渲染 -->
+        <li class="movieleft"><img
+            class="movielogo"
+            :src="item.poster"
+          ></li>
+        <li class="moviemiddle">
+          <p class="midea"><span class="moviename">{{item.name}}</span><span class="item">{{item.filmType.name}}</span></p>
+          <p class="see">观众评分<span class="grade">{{item.grade}}</span></p>
+          <p class="actor">主演：{{actorsList(item.actors)}}</p>
+          <p class="times">{{item.nation}} | {{item.runtime}}分钟</p>
+        </li>
+        <li class="movieright">
+          <p class="buy">购票</p>
+        </li>
+      </ul>
+      <div
+        class="load-more"
+        @click="loadMore"
+      >{{ loadMoreText }}</div>
     </div>
-    <!-- 列表 -->
+  </div>
+  <!-- 列表 -->
 </template>
 <script>
 import axios from 'axios';
@@ -91,6 +99,20 @@ export default {
         this.pageNum++;
         this.getFilms();
       }
+    },
+    /**
+    * 去详情页面
+    * @param {String} id 影片ID
+    */
+    goDetail (item) {
+      this.$router.push({
+        // path: '/film/' + id,
+        // path: `/film/${id}`,
+        name: 'filmDetail',
+        params: {
+          filmitem: item
+        }
+      })
     }
   },
   created () {
@@ -99,7 +121,7 @@ export default {
 }
 </script>
 <style lang="scss">
-@import '@/styles/common/px2rem.scss';
+@import "@/styles/common/px2rem.scss";
 .lx-main {
   width: 100%;
   .movies {

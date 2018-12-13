@@ -5,6 +5,7 @@
       <ul
         v-for="(item,index) in films"
         :key="index"
+        @click="goDetail(item)"
       >
         <li class="movieleft"><img
             class="movielogo"
@@ -85,6 +86,20 @@ export default {
         });
       }
       return arr.join(' ');
+    },
+    /**
+    * 去详情页面
+    * @param {String} id 影片ID
+    */
+     goDetail (item) {
+      this.$router.push({
+        // path: '/film/' + id,
+        // path: `/film/${id}`,
+        name: 'filmDetail',
+        params: {
+          filmitem: item
+        }
+      })
     },
     /**
      * 加载更多
