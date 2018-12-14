@@ -1,7 +1,10 @@
 <template>
   <div class="film-detail">
     <div class="film-poster">
-      <img :src="filmitem.poster" alt="">
+      <img
+        :src="filmitem.poster"
+        alt=""
+      >
     </div>
 
     <div class="film-detail">
@@ -55,19 +58,26 @@ export default {
 
   methods: {
     getFilmDetail () {
-        console.log(this.$route.params);
-        this.filmitem = this.$route.params.filmitem;
+      console.log(this.$route.params);
+      this.filmitem = this.$route.params.filmitem;
     },
     GetDates () {
       var riqi = new Date(this.$route.params.filmitem.premiereAt * 1000);
-      if (Number(riqi.getDate()) < 10) {
-         this.datariqi = riqi.getFullYear() + "-" + (riqi.getMonth() + 1) + "-0" + riqi.getDate();
-      } else {
+      if (Number(riqi.getDate()) >= 10 && Number(riqi.getMonth()) >= 9) {
         this.datariqi = riqi.getFullYear() + "-" + (riqi.getMonth() + 1) + "-" + riqi.getDate();
+      } else {
+        if (Number(riqi.getMonth()) < 9) {
+          this.datariqi = riqi.getFullYear() + "-0" + (riqi.getMonth() + 1) + "-" + riqi.getDate();
+        }
+        if (Number(riqi.getDate()) < 10) {
+          this.datariqi = riqi.getFullYear() + "-" + (riqi.getMonth() + 1) + "-0" + riqi.getDate();
+        }
+        if (Number(riqi.getDate()) < 10 && Number(riqi.getMonth()) < 9) {
+          this.datariqi = riqi.getFullYear() + "-0" + (riqi.getMonth() + 1) + "-0" + riqi.getDate();
+        }
       }
     }
   },
-
   created () {
     // let filmId = this.$route.params.filmId;
     this.getFilmDetail();
@@ -94,7 +104,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '@/styles/common/px2rem.scss';
+@import "@/styles/common/px2rem.scss";
 
 .film-detail {
   flex: 1;
