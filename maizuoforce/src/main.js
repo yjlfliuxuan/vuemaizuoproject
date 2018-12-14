@@ -5,6 +5,7 @@ import Vue from 'vue';
 // 单文件组件（.vue）一个文件就是一个组件 import App from './App.vue'  .vue可以省略n
 import App from './App';
 import router from './router';
+import store from "./store";
 // 去除vue开发时的浏览器提示
 Vue.config.productionTip = false;
 
@@ -12,6 +13,7 @@ Vue.config.productionTip = false;
 new Vue({
   el: '#app',
   router: router,
+  store: store,
   components: { App },
   template: '<App/>'
 })

@@ -31,13 +31,14 @@
 </template>
 <script>
 import Swiper from "swiper";
-import banner from '../components/Banner/index'
+import banner from '../components/Banner/index';
+import store from '../store.js';
+console.log(store.state.curCity);
 export default {
   name: "films",
   data () {
     return {
-      //当前城市
-      curCity: ""
+     curCity: ""
     }
   },
   components: {
