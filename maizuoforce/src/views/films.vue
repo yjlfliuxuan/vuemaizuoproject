@@ -32,26 +32,30 @@
 <script>
 import Swiper from "swiper";
 import banner from '../components/Banner/index';
-import store from '../store.js';
-console.log(store.state.curCity);
+import { mapState } from 'vuex';
 export default {
   name: "films",
   data () {
     return {
-     curCity: ""
+
     }
   },
   components: {
     'Banner': banner
   },
+  computed: {
+    ...mapState(
+      ["curCity"]
+    )
+  },
   methods: {
     //根据百度地图开发平台Api，获取当前城市名称
     getCityName () {
       /* eslint-disable*/
-      let myCity = new BMap.LocalCity();
-      myCity.get((result) => {
-        this.curCity = result.name;
-      });
+      // let myCity = new BMap.LocalCity();
+      // myCity.get((result) => {
+      //   this.curCity = result.name;
+      // });
     },
     /**
      * 切换路由
@@ -77,7 +81,6 @@ export default {
       }
     });
   },
-
   created () {
     this.getCityName();
   }

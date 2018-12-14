@@ -18,7 +18,7 @@
 import FootNav from '../components/FootNav';
 
 export default {
-  name: 'Home',
+  name: 'home',
 
   components: {
     FootNav
