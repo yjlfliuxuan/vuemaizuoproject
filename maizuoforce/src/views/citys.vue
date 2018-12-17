@@ -420,20 +420,27 @@ export default {
   components: {
     "mt-search": Search
   },
-  methods: {
-    gitcitys () {
-      axios.get('/static/api/citysname.json', {
-        params: {
-        }
-      }).then(res => {
-        var result = res.data;
-        console.log(res);
-        console.log(result);
-      })
-    },
-    created () {
-      this.getcitys();
-    }
+  created () { //创建的时候发送请求，不传参，只需要写请求地址就可以了
+    axios.get('/static/api/citysname.json').then(res => {
+      console.log(res.data);
+      let arr = res.data;
+      let obj = {};
+      let i = 0;
+      let newarr = [];
+      arr.forEach(item => { //item为数组中每一个对象
+         let hotcity = item.isHot;
+         if (obj[hotcity]) {
+           newarr[obj[hotcity] - 1].list.push(item);
+         } else {
+           obj[hotcity] = ++i;
+           newarr.push({
+              isHot: hotcity,
+              list: [item]
+           })
+         }
+      });
+           console.log(newarr);
+    })
   }
 }
 </script>
