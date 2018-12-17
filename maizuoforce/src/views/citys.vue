@@ -428,18 +428,27 @@ export default {
       let i = 0;
       let newarr = [];
       arr.forEach(item => { //item为数组中每一个对象
-         let hotcity = item.isHot;
-         if (obj[hotcity]) {
-           newarr[obj[hotcity] - 1].list.push(item);
-         } else {
-           obj[hotcity] = ++i;
-           newarr.push({
-              isHot: hotcity,
-              list: [item]
-           })
-         }
+        let hotcity = item.isHot;
+        if (obj[hotcity]) {
+          newarr[obj[hotcity] - 1].list.push(item);
+        } else {
+          obj[hotcity] = ++i;
+          newarr.push({
+            isHot: hotcity,
+            list: [item]
+          })
+        }
       });
-           console.log(newarr);
+      newarr.forEach(item => {
+        if (item.isHot === 1) {
+          let x = item.list;
+          var y = [];
+          for (let i = 0; i < x.length; i++) {
+            y.push(x[i].name);
+          }
+            this.hotcitys = y;
+        }
+      })
     })
   }
 }
