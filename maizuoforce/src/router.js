@@ -15,56 +15,62 @@ import 'nprogress/nprogress.css';
 vue.use(VueRouter);
 const router = new VueRouter({
   routes: [{
-        path: '/',
-        component: () => import('./views/home.vue'), //异步路由
-        children: [{
-            path: '',
-            redirect: '/films/nowPlaying'
-          },
-          {
-            // 首页
-            path: 'films',
-            // name: 'films',
-            component: () => import('./views/films.vue'),
-            children: [{
-                path: '',
-                redirect: '/films/nowPlaying'
-              },
-              {
-                path: 'nowPlaying',
-                name: 'nowPlaying',
-                component: () => import('./components/NowPlay/index.vue')
-              },
-              {
-                path: 'comingSoon',
-                name: 'comingSoon',
-                component: () => import('./components/SoonPlay/index.vue')
-              }
-            ]
-          },
-          {
-            // 影院页
-            path: 'cinema',
-            name: 'cinema',
-            component: () => import('./views/cinema.vue')
-          },
-          {
-            // 个人中心页
-            path: 'center',
-            name: 'center',
-            component: () => import('./views/center.vue')
-          }
-        ]
-      },
+      path: '/',
+      component: () => import('./views/home.vue'), //异步路由
+      children: [{
+          path: '',
+          redirect: '/films/nowPlaying'
+        },
+        {
+          // 首页
+          path: 'films',
+          // name: 'films',
+          component: () => import('./views/films.vue'),
+          children: [{
+              path: '',
+              redirect: '/films/nowPlaying'
+            },
+            {
+              path: 'nowPlaying',
+              name: 'nowPlaying',
+              component: () => import('./components/NowPlay/index.vue')
+            },
+            {
+              path: 'comingSoon',
+              name: 'comingSoon',
+              component: () => import('./components/SoonPlay/index.vue')
+            }
+          ]
+        },
+        {
+          // 影院页
+          path: 'cinema',
+          name: 'cinema',
+          component: () => import('./views/cinema.vue')
+        },
+        {
+          // 个人中心页
+          path: 'center',
+          name: 'center',
+          component: () => import('./views/center.vue')
+        }
+      ]
+    },
     {
       //详情页面
       path: "/film/:filmId",
       name: "filmDetail",
       component: () => import('./views/FilmDetail.vue'),
-        beforeEnter (to, from, next) {
-          console.log('我是一个路由独享的钩子函数');
-          next();
-        }
+      beforeEnter (to, from, next) {
+        console.log('我是一个路由独享的钩子函数');
+        next();
+      }
+    },
+    {
+      // 选择城市页
+      path: '/citys',
+      name: 'filmcitys',
+      component: () => import('./views/citys.vue')
     },
     {
       // 用户

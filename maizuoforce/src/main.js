@@ -6,6 +6,9 @@ import Vue from 'vue';
 import App from './App';
 import router from './router';
 import store from "./store";
+// import MintUi from "mint-ui";
+// import 'mint-ui/lib/style.css';
+// Vue.use(MintUi);
 // 去除vue开发时的浏览器提示
 Vue.config.productionTip = false;
 

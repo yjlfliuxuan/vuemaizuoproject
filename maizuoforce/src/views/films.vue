@@ -3,7 +3,7 @@
     <Banner></Banner>
     <!-- 城市定位 -->
     <div class="adress">
-      <span>{{curCity}}</span>
+      <router-link :to="{path:'/citys'}" tag="span">{{curCity}}</router-link>
       <i class="iconfont">&#xe633;</i>
     </div>
     <!-- 城市定位 -->
@@ -49,14 +49,6 @@ export default {
     )
   },
   methods: {
-    //根据百度地图开发平台Api，获取当前城市名称
-    getCityName () {
-      /* eslint-disable*/
-      // let myCity = new BMap.LocalCity();
-      // myCity.get((result) => {
-      //   this.curCity = result.name;
-      // });
-    },
     /**
      * 切换路由
      */
@@ -82,7 +74,8 @@ export default {
     });
   },
   created () {
-    this.getCityName();
+    // this.$store.commit("getCityName");  这两句提交都是相当于执行了store.js中的函数，commit是mutations中的同步函数，而dispatch是actions中的异步函数
+     this.$store.dispatch('getCityName');
   }
 };
 </script>

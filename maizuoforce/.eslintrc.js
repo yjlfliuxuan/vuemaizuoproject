@@ -29,6 +29,7 @@ module.exports = {
     'semi': 'off',
     'quotes': 'off',
     "indent": 'off',
-    "spaced-comment": 'off'
+    "spaced-comment": 'off',
+    "comma-spacing":'off'
   }
 }
