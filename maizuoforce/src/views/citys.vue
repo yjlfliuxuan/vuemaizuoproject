@@ -26,13 +26,13 @@
     <div class="direct">
       <h3>GPS定位你所在城市</h3>
       <div class="gps">
-        <router-link :to="{path:''}" tag="div" @click.stop="change(curCity)" class="gpsdw" >{{curCity}}</router-link>
+        <router-link to="/films/nowPlaying" tag="div" @click.stop.native="change(curCity)" class="gpsdw" >{{curCity}}</router-link>
       </div>
     </div>
     <div class="direct1">
       <h3>热门城市</h3>
       <div class="gps1 hotcitys">
-        <router-link :to="{path:''}" tag="div" @click.stop="change(item)"
+        <router-link :to="{path:'/films/nowPlaying'}" tag="div" @click.stop.native="change(item)"
           class="gpsdw1"
           v-for="(item,index) in hotcitys"
           :key="index"
@@ -45,7 +45,7 @@
     >
       <h3>A</h3>
       <div class="gps1 citysA">
-        <router-link  :to="{path:''}" tag="div" @click.stop="change(item)"
+        <router-link  :to="{path:'/films/nowPlaying'}" tag="div" @click.stop.native="change(item)"
           class="gpsdw1"
           v-for="(item,index) in citysA"
           :key="index"
@@ -58,7 +58,7 @@
     >
       <h3>B</h3>
       <div class="gps1 citysB">
-        <router-link :to="{path:''}" tag="div" @click.stop="change(item)"
+        <router-link :to="{path:'/films/nowPlaying'}" tag="div" @click.stop.native="change(item)"
           class="gpsdw1"
           v-for="(item,index) in citysB"
           :key="index"
@@ -71,7 +71,7 @@
     >
       <h3>C</h3>
       <div class="gps1 citysC">
-        <router-link :to="{path:''}" tag="div" @click.stop="change(item)"
+        <router-link :to="{path:'/films/nowPlaying'}" tag="div" @click.stop.native="change(item)"
           class="gpsdw1"
           v-for="(item,index) in citysC"
           :key="index"
@@ -84,7 +84,7 @@
     >
       <h3>D</h3>
       <div class="gps1 citysD">
-        <router-link :to="{path:''}" tag="div" @click.stop="change(item)"
+        <router-link :to="{path:'/films/nowPlaying'}" tag="div" @click.stop.native="change(item)"
           class="gpsdw1"
           v-for="(item,index) in citysD"
           :key="index"
@@ -97,7 +97,7 @@
     >
       <h3>E</h3>
       <div class="gps1 citysE">
-        <router-link :to="{path:''}" tag="div" @click.stop="change(item)"
+        <router-link :to="{path:'/films/nowPlaying'}" tag="div" @click.stop.native="change(item)"
           class="gpsdw1"
           v-for="(item,index) in citysE"
           :key="index"
@@ -110,7 +110,7 @@
     >
       <h3>F</h3>
       <div class="gps1 citysF">
-        <router-link :to="{path:''}" tag="div" @click.stop="change(item)"
+        <router-link :to="{path:'/films/nowPlaying'}" tag="div" @click.stop.native="change(item)"
           class="gpsdw1"
           v-for="(item,index) in citysF"
           :key="index"
@@ -123,7 +123,7 @@
     >
       <h3>G</h3>
       <div class="gps1 citysG">
-        <router-link :to="{path:''}" tag="div" @click.stop="change(item)"
+        <router-link :to="{path:'/films/nowPlaying'}" tag="div" @click.stop.native="change(item)"
           class="gpsdw1"
           v-for="(item,index) in citysG"
           :key="index"
@@ -136,7 +136,7 @@
     >
       <h3>H</h3>
       <div class="gps1 citysH">
-        <router-link :to="{path:''}" tag="div" @click.stop="change(item)"
+        <router-link :to="{path:'/films/nowPlaying'}" tag="div" @click.stop.native="change(item)"
           class="gpsdw1"
           v-for="(item,index) in citysH"
           :key="index"
@@ -149,7 +149,7 @@
     >
       <h3>I</h3>
       <div class="gps1 citysI">
-        <router-link :to="{path:''}" tag="div" @click.stop="change(item)"
+        <router-link :to="{path:'/films/nowPlaying'}" tag="div" @click.stop.native="change(item)"
           class="gpsdw1"
           v-for="(item,index) in citysI"
           :key="index"
@@ -162,7 +162,7 @@
     >
       <h3>J</h3>
       <div class="gps1 citysJ">
-        <router-link :to="{path:''}" tag="div" @click.stop="change(item)"
+        <router-link :to="{path:'/films/nowPlaying'}" tag="div" @click.stop.native="change(item)"
           class="gpsdw1"
           v-for="(item,index) in citysJ"
           :key="index"
@@ -175,7 +175,7 @@
     >
       <h3>K</h3>
       <div class="gps1 citysK">
-        <router-link :to="{path:''}" tag="div" @click.stop="change(item)"
+        <router-link :to="{path:'/films/nowPlaying'}" tag="div" @click.stop.native="change(item)"
           class="gpsdw1"
           v-for="(item,index) in citysK"
           :key="index"
@@ -188,7 +188,7 @@
     >
       <h3>L</h3>
       <div class="gps1 citysL">
-        <router-link :to="{path:''}" tag="div" @click.stop="change(item)"
+        <router-link :to="{path:'/films/nowPlaying'}" tag="div" @click.stop.native="change(item)"
           class="gpsdw1"
           v-for="(item,index) in citysL"
           :key="index"
@@ -201,7 +201,7 @@
     >
       <h3>M</h3>
       <div class="gps1 citysM">
-        <router-link :to="{path:''}" tag="div" @click.stop="change(item)"
+        <router-link :to="{path:'/films/nowPlaying'}" tag="div" @click.stop.native="change(item)"
           class="gpsdw1"
           v-for="(item,index) in citysM"
           :key="index"
@@ -214,22 +214,9 @@
     >
       <h3>N</h3>
       <div class="gps1 citysN">
-        <router-link :to="{path:''}" tag="div" @click.stop="change(item)"
+        <router-link :to="{path:'/films/nowPlaying'}" tag="div" @click.stop.native="change(item)"
           class="gpsdw1"
           v-for="(item,index) in citysN"
-          :key="index"
-        >{{item}}</router-link>
-      </div>
-    </div>
-    <div
-      class="znletter"
-      id="letterO"
-    >
-      <h3>O</h3>
-      <div class="gps1 citysO">
-        <router-link :to="{path:''}" tag="div" @click.stop="change(item)"
-          class="gpsdw1"
-          v-for="(item,index) in citysO"
           :key="index"
         >{{item}}</router-link>
       </div>
@@ -240,7 +227,7 @@
     >
       <h3>P</h3>
       <div class="gps1 citysP">
-        <router-link :to="{path:''}" tag="div" @click.stop="change(item)"
+        <router-link :to="{path:'/films/nowPlaying'}" tag="div" @click.stop.native="change(item)"
           class="gpsdw1"
           v-for="(item,index) in citysP"
           :key="index"
@@ -253,7 +240,7 @@
     >
       <h3>Q</h3>
       <div class="gps1 citysQ">
-        <router-link :to="{path:''}" tag="div" @click.stop="change(item)"
+        <router-link :to="{path:'/films/nowPlaying'}" tag="div" @click.stop.native="change(item)"
           class="gpsdw1"
           v-for="(item,index) in citysQ"
           :key="index"
@@ -266,7 +253,7 @@
     >
       <h3>R</h3>
       <div class="gps1 citysR">
-        <router-link :to="{path:''}" tag="div" @click.stop="change(item)"
+        <router-link :to="{path:'/films/nowPlaying'}" tag="div" @click.stop.native="change(item)"
           class="gpsdw1"
           v-for="(item,index) in citysR"
           :key="index"
@@ -279,7 +266,7 @@
     >
       <h3>S</h3>
       <div class="gps1 citysS">
-        <router-link :to="{path:''}" tag="div" @click.stop="change(item)"
+        <router-link :to="{path:'/films/nowPlaying'}" tag="div" @click.stop.native="change(item)"
           class="gpsdw1"
           v-for="(item,index) in citysS"
           :key="index"
@@ -292,35 +279,9 @@
     >
       <h3>T</h3>
       <div class="gps1 citysT">
-        <router-link :to="{path:''}" tag="div" @click.stop="change(item)"
+        <router-link :to="{path:'/films/nowPlaying'}" tag="div" @click.stop.native="change(item)"
           class="gpsdw1"
           v-for="(item,index) in citysT"
-          :key="index"
-        >{{item}}</router-link>
-      </div>
-    </div>
-    <div
-      class="znletter"
-      id="letterU"
-    >
-      <h3>U</h3>
-      <div class="gps1 citysU">
-        <router-link :to="{path:''}" tag="div" @click.stop="change(item)"
-          class="gpsdw1"
-          v-for="(item,index) in citysU"
-          :key="index"
-        >{{item}}</router-link>
-      </div>
-    </div>
-    <div
-      class="znletter"
-      id="letterV"
-    >
-      <h3>V</h3>
-      <div class="gps1 citysV">
-        <router-link :to="{path:''}" tag="div" @click.stop="change(item)"
-          class="gpsdw1"
-          v-for="(item,index) in citysV"
           :key="index"
         >{{item}}</router-link>
       </div>
@@ -331,7 +292,7 @@
     >
       <h3>W</h3>
       <div class="gps1 citysW">
-        <router-link :to="{path:''}" tag="div" @click.stop="change(item)"
+        <router-link :to="{path:'/films/nowPlaying'}" tag="div" @click.stop.native="change(item)"
           class="gpsdw1"
           v-for="(item,index) in citysW"
           :key="index"
@@ -344,7 +305,7 @@
     >
       <h3>X</h3>
       <div class="gps1 citysX">
-        <router-link :to="{path:''}" tag="div" @click.stop="change(item)"
+        <router-link :to="{path:'/films/nowPlaying'}" tag="div" @click.stop.native="change(item)"
           class="gpsdw1"
           v-for="(item,index) in citysX"
           :key="index"
@@ -357,7 +318,7 @@
     >
       <h3>Y</h3>
       <div class="gps1 citysY">
-        <router-link :to="{path:''}" tag="div" @click.stop="change(item)"
+        <router-link :to="{path:'/films/nowPlaying'}" tag="div" @click.stop.native="change(item)"
           class="gpsdw1"
           v-for="(item,index) in citysY"
           :key="index"
@@ -370,7 +331,7 @@
     >
       <h3>Z</h3>
       <div class="gps1 citysZ">
-        <router-link :to="{path:''}" tag="div" @click.stop="change(item)"
+        <router-link :to="{path:'/films/nowPlaying'}" tag="div" @click.stop.native="change(item)"
           class="gpsdw1"
           v-for="(item,index) in citysZ"
           :key="index"
@@ -387,8 +348,8 @@ export default {
   name: 'citys',
   data () {
     return {
-      citysname: '',
-      letters: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"],
+      citysname: [],
+      letters: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N","P", "Q", "R", "S", "T", "W", "X", "Y", "Z"],
       hotcitys: [],
       citysA: [],
       citysB: [],
@@ -404,14 +365,11 @@ export default {
       citysL: [],
       citysM: [],
       citysN: [],
-      citysO: [],
       citysP: [],
       citysQ: [],
       citysR: [],
       citysS: [],
       citysT: [],
-      citysU: [],
-      citysV: [],
       citysW: [],
       citysX: [],
       citysY: [],
@@ -422,11 +380,12 @@ export default {
     "mt-search": Search
   },
   methods: {
-    change (citysname) {
+    change (CitysName) {
       // 操作 store 里面的 mutations
       // 得要 提交 mutations
+      console.log(CitysName);
       this.$store.commit('chgCurCity', {
-        'cityName': citysname
+        'cityName': CitysName
       })
     }
   },
@@ -436,14 +395,15 @@ export default {
     )
   },
   created () { //创建的时候发送请求，不传参，只需要写请求地址就可以了
-    this.$store.dispatch('getCityName');
+    // this.$store.dispatch('getCityName');
     axios.get('/static/api/citysname.json').then(res => {
-      console.log(res.data);
+      // console.log(res.data);
       let arr = res.data;
       arr.forEach(item => {
         if (item.isHot === 1) {
           this.hotcitys.push(item.name);
         }
+        this.citysname.push(item.name);
         var firstletter = item.pinyin.charAt(0).toUpperCase();
         switch (firstletter) {
           case "A":
@@ -488,9 +448,6 @@ export default {
           case "N":
             this.citysN.push(item.name);
             break;
-          case "O":
-            this.citysO.push(item.name);
-            break;
           case "P":
             this.citysP.push(item.name);
             break;
@@ -505,12 +462,6 @@ export default {
             break;
           case "T":
             this.citysT.push(item.name);
-            break;
-          case "U":
-            this.citysU.push(item.name);
-            break;
-          case "V":
-            this.citysV.push(item.name);
             break;
           case "W":
             this.citysW.push(item.name);
@@ -565,6 +516,9 @@ body {
       width: 100%;
       height: px2rem(49);
       background: #f4f4f4;
+      .mint-search {
+        height:px2rem(49);
+      }
     }
   }
   .rightside {

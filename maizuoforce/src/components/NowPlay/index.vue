@@ -59,7 +59,7 @@ export default {
         // PS: res 不单单包含后台给的数据，还有一些个额外的东西。
         // console.log(res);
         let result = response.data;
-        console.log(result);
+        //console.log(result);
         // 一共多少页
         this.totalPage = Math.ceil(result.data.total / this.pageSize);
         // 判断是否还有更多页

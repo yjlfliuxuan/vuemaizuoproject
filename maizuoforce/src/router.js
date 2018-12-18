@@ -93,7 +93,7 @@ const router = new VueRouter({
               // 注意，如果需要实现，拦截到登陆页面之后，登录成功回跳到那个页面。
               // localStorage.setItem('myNeedPage', '/user/card');
               // next('/user/login');
-              console.log(to.fullPath);
+              //console.log(to.fullPath);
               next({
                 path: '/user/login',
                 query: {
@@ -133,8 +133,8 @@ router.beforeEach((to, from, next) => {
   //   next('/user/login')
   // }
 
-  console.log(to);
-  console.log(from);
+  //console.log(to);
+  //console.log(from);
 
   // 请一定记得要做 next
   next();

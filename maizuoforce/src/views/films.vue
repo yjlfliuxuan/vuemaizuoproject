@@ -75,7 +75,7 @@ export default {
   },
   created () {
     // this.$store.commit("getCityName");  这两句提交都是相当于执行了store.js中的函数，commit是mutations中的同步函数，而dispatch是actions中的异步函数
-     this.$store.dispatch('getCityName');
+    //  this.$store.dispatch('getCityName');
   }
 };
 </script>

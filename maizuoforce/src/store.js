@@ -11,7 +11,7 @@ const store = new Vuex.Store({
   // 状态： 放置整个项目中所有能够全局共用的状态。
   state: {
     // 当前定位的城市
-    curCity: '岳阳市',
+    curCity: '深圳',
 
     // 项目名称
     projectName: '卖座网'
@@ -24,9 +24,9 @@ const store = new Vuex.Store({
 
   // 唯一能够修改 state 状态的东西 。同步操作
   mutations: {
-    setCurCity (state, name) {
-      state.curCity = name;
-    },
+    // setCurCity (state, name) {
+    //   state.curCity = name;
+    // },
     /**
      * 修改 当前定位的城市
      * @param {Object} state 就是当前 store实例的 state 属性
@@ -40,13 +40,13 @@ const store = new Vuex.Store({
   // 做异步操作的时候，要用到。
   actions: {
     //根据百度地图开发平台Api，获取当前城市名称
-    getCityName (context) { // context 就是this.$store
-      /* eslint-disable*/
-      let myCity = new BMap.LocalCity();
-      myCity.get((result) => {
-        context.commit('setCurCity', result.name);
-      });
-    }
+    // getCityName (context) { // context 就是this.$store
+    //   /* eslint-disable*/
+    //   let myCity = new BMap.LocalCity();
+    //   myCity.get((result) => {
+    //     context.commit('setCurCity', result.name);
+    //   });
+    // }
   },
 
   // 对 store 做拆分，拆分成一个一个的小 store
