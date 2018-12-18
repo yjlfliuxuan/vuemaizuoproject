@@ -1,43 +1,63 @@
 <template>
-  <div class="film-detail">
-    <div class="film-poster">
-      <img
-        :src="filmitem.poster"
-        alt=""
-      >
-    </div>
-
-    <div class="film-detail">
-      <div class="col">
-        <div class="film-name">
-          <span class="name">{{ filmitem.name }}</span>
-          <span class="item">{{filmitem.filmType.name}}</span>
+  <div class="box">
+    <div class="boxup">
+      <div class="film-detail">
+        <div class="film-poster">
+          <img
+            :src="filmitem.poster"
+            alt=""
+          >
         </div>
-        <div class="film-grade">
-          <span class="grade">{{filmitem.grade}}</span>
-          <span class="grade-text">分</span>
+
+        <div class="film-details">
+          <div class="col">
+            <div class="film-name">
+              <span class="name">{{ filmitem.name }}</span>
+              <span class="item">{{filmitem.filmType.name}}</span>
+            </div>
+            <div class="film-grade">
+              <span class="grade">{{filmitem.grade}}</span>
+              <span class="grade-text">分</span>
+            </div>
+          </div>
+
+          <div class="film-category grey-text">{{filmitem.category}}</div>
+          <div class="film-premiere-time grey-text">
+            {{datariqi}}上映
+          </div>
+          <div class="film-nation-runtime grey-text">
+            {{filmitem.nation}} | {{filmitem.runtime}}分钟
+          </div>
+          <div class="film-synopsis grey-text">
+            {{filmitem.synopsis}}
+          </div>
+          <div class="toggle">
+            <i class="iconfont icon-xiala"></i>
+          </div>
+        </div>
+
+        <div class="actor">
+          <h2>演职人员</h2>
+          <div>
+            <ul>
+              <li
+                v-for="(item,index) in filmitem.actors"
+                :key="index"
+              ><img
+                  :src="item.avatarAddress"
+                  class="pic"
+                >
+                <p>{{item.name}}</p>
+                <p>{{item.role}}</p>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
-
-      <div class="film-category grey-text">{{filmitem.category}}</div>
-      <div class="film-premiere-time grey-text">
-        {{datariqi}}上映
-      </div>
-      <div class="film-nation-runtime grey-text">
-        {{filmitem.nation}} | {{filmitem.runtime}}分钟
-      </div>
-      <div class="film-synopsis grey-text">
-        {{filmitem.synopsis}}
-      </div>
-      <div class="toggle">
-        <i class="iconfont icon-xiala"></i>
-      </div>
     </div>
-
-    <!-- <router-link to="/film/9898">我要看无名之辈</router-link> -->
+    <div class="boxdown">选座购票</div>
   </div>
 </template>
-
 <script>
 export default {
   name: 'FilmDetail',
@@ -58,7 +78,7 @@ export default {
 
   methods: {
     getFilmDetail () {
-      console.log(this.$route.params);
+      console.log(this.$route.params.filmitem);
       this.filmitem = this.$route.params.filmitem;
     },
     GetDates () {
@@ -105,90 +125,130 @@ export default {
 
 <style lang="scss">
 @import "@/styles/common/px2rem.scss";
-
-.film-detail {
-  flex: 1;
-  overflow-y: auto;
-
-  .film-poster {
-    height: px2rem(210);
-    img {
-      width: 100%;
-      height: 100%;
-    }
-  }
-
-  .film-detail {
-    padding: px2rem(15);
-    padding-top: px2rem(12);
-    background-color: #fff;
-
-    .col {
-      display: flex;
-      align-items: center;
-    }
-
-    .film-name {
+.box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  background: gray;
+  .boxup {
+    flex: 1;
+    overflow-y: auto;
+    .film-detail {
       flex: 1;
-      display: flex;
-      align-items: center;
-
-      .name {
-        color: #191a1b;
-        font-size: px2rem(18);
-        height: px2rem(24);
-        line-height: px2rem(24);
-        margin-right: px2rem(8);
+      .film-poster {
+        height: px2rem(210);
+        img {
+          width: 100%;
+          height: 100%;
+        }
       }
+      .film-details {
+        padding: px2rem(15);
+        padding-top: px2rem(12);
+        background-color: #fff;
+        .col {
+          display: flex;
+          align-items: center;
+        }
 
-      .item {
-        font-size: px2rem(12);
-        color: #fff;
-        background-color: #d2d6dc;
-        height: px2rem(14);
-        line-height: px2rem(14);
-        padding: 0 px2rem(2);
-        border-radius: px2rem(2);
-        display: inline-block;
+        .film-name {
+          flex: 1;
+          display: flex;
+          align-items: center;
+
+          .name {
+            color: #191a1b;
+            font-size: px2rem(18);
+            height: px2rem(24);
+            line-height: px2rem(24);
+            margin-right: px2rem(8);
+          }
+
+          .item {
+            font-size: px2rem(12);
+            color: #fff;
+            background-color: #d2d6dc;
+            height: px2rem(14);
+            line-height: px2rem(14);
+            padding: 0 px2rem(2);
+            border-radius: px2rem(2);
+            display: inline-block;
+          }
+        }
+
+        .film-grade {
+          flex-shrink: 0;
+          width: px2rem(100);
+          text-align: right;
+          color: #ffb232;
+          font-size: px2rem(12);
+
+          .grade {
+            font-size: px2rem(18);
+            font-style: italic;
+          }
+        }
+
+        .grey-text {
+          font-size: px2rem(13);
+          line-height: px2rem(20);
+          color: #797d82;
+          margin-top: px2rem(4);
+        }
+
+        .film-synopsis {
+          margin-top: px2rem(8);
+          overflow: hidden;
+          &.hide {
+            height: px2rem(40);
+          }
+        }
+
+        .toggle {
+          text-align: center;
+          &.hide {
+            i {
+              transform: translate(180deg);
+            }
+          }
+        }
       }
-    }
-
-    .film-grade {
-      flex-shrink: 0;
-      width: px2rem(100);
-      text-align: right;
-      color: #ffb232;
-      font-size: px2rem(12);
-
-      .grade {
-        font-size: px2rem(18);
-        font-style: italic;
-      }
-    }
-
-    .grey-text {
-      font-size: px2rem(13);
-      line-height: px2rem(20);
-      color: #797d82;
-      margin-top: px2rem(4);
-    }
-
-    .film-synopsis {
-      margin-top: px2rem(8);
-      overflow: hidden;
-      &.hide {
-        height: px2rem(40);
-      }
-    }
-
-    .toggle {
-      text-align: center;
-      &.hide {
-        i {
-          transform: translate(180deg);
+      .actor {
+        margin-top: px2rem(5);
+        width: 100%;
+        height: px2rem(192);
+        background: white;
+        h2 {
+          margin: 0 px2rem(10) px2rem(10) px2rem(10);
+          padding-top: px2rem(10);
+        }
+        ul {
+          display: flex;
+          overflow-x: auto;
+          width: 100%;
+          flex-direction: nowrap;
+          li {
+            flex: 1;
+            height: px2rem(149);
+            margin-left: px2rem(10);
+            .pic {
+              width: px2rem(85);
+              height: px2rem(85);
+            }
+          }
         }
       }
     }
+  }
+  .boxdown {
+    flex-shrink: 0;
+    height: px2rem(49);
+    width: 100%;
+    text-align: center;
+    line-height: px2rem(49);
+    background: #ff5f16;
+    color: white;
   }
 }
 </style>
