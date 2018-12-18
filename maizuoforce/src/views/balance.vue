@@ -1,11 +1,11 @@
 <template>
   <div>
-    我是card 卖座卡页面
+    我是balance 余额页面
   </div>
 </template>
 
 <script>
 export default {
-  name: 'card'
+  name: 'balance'
 }
 </script>

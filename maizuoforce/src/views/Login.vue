@@ -49,7 +49,7 @@ export default {
         if (result.phone === this.phoneInput && result.code === this.codeInput) {
           console.log('登录成功');
           // 写入 本地存储
-          localStorage.setItem('userName', '张三');
+          localStorage.setItem('userName', this.phoneInput);
 
           // var myNeedPage = localStorage.getItem('myNeedPage')
 
