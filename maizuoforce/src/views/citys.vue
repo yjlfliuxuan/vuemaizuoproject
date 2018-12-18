@@ -348,7 +348,7 @@ export default {
   name: 'citys',
   data () {
     return {
-      citysname: [],
+      citysname: '',
       letters: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N","P", "Q", "R", "S", "T", "W", "X", "Y", "Z"],
       hotcitys: [],
       citysA: [],
@@ -403,7 +403,6 @@ export default {
         if (item.isHot === 1) {
           this.hotcitys.push(item.name);
         }
-        this.citysname.push(item.name);
         var firstletter = item.pinyin.charAt(0).toUpperCase();
         switch (firstletter) {
           case "A":
