@@ -94,7 +94,7 @@ export default {
     border-radius: px2rem(15);
     color: white;
     background: rgba($color: #000000, $alpha: 0.3);
-    width: px2rem(51);
+    min-width: px2rem(51);
     height: px2rem(30);
     line-height: px2rem(30);
     display: flex;
