@@ -2,10 +2,10 @@
   <div class="films-list">
     <Banner></Banner>
     <!-- 城市定位 -->
-    <div class="adress">
-      <router-link :to="{path:'/citys'}" tag="span">{{curCity}}</router-link>
+    <router-link :to="{path:'/citys'}" class="adress">
+      <span>{{curCity}}</span>
       <i class="iconfont">&#xe633;</i>
-    </div>
+    </router-link>
     <!-- 城市定位 -->
     <!-- tab栏 -->
     <div class="tabs">
