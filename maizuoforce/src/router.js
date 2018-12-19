@@ -73,6 +73,12 @@ const router = new VueRouter({
       component: () => import('./views/citys.vue')
     },
     {
+      // 9.9拼团
+      path: '/pintuan',
+      name: 'pintuan',
+      component: () => import('./views/pintuan.vue')
+    },
+    {
       // 用户
       path: '/user',
       component: {

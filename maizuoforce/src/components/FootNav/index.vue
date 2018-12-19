@@ -23,7 +23,7 @@
         <p>影院</p>
       </router-link>
       <router-link
-        :to="{path:'/ping'}"
+        :to="{path:'/pintuan'}"
         tag="li"
       >
         <p>
