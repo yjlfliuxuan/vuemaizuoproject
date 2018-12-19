@@ -35,7 +35,26 @@
             <i class="iconfont icon-xiala"></i>
           </div>
         </div>
-
+        <div class="shopping">
+          <mt-button type="primary">立即购买</mt-button>
+          <mt-button type="danger">加入购物车</mt-button>
+          <div class="mui-numbox">
+            <!-- "-"按钮，点击可减小当前数值 -->
+            <button
+              class="mui-btn mui-numbox-btn-minus"
+              type="button"
+            >-</button>
+            <input
+              class="mui-numbox-input"
+              type="number"
+            />
+            <!-- "+"按钮，点击可增大当前数值 -->
+            <button
+              class="mui-btn mui-numbox-btn-plus"
+              type="button"
+            >+</button>
+          </div>
+        </div>
         <div class="actor">
           <h2>演职人员</h2>
           <div>
@@ -59,6 +78,7 @@
   </div>
 </template>
 <script>
+import { Button } from 'mint-ui';
 export default {
   name: 'FilmDetail',
 
@@ -68,7 +88,9 @@ export default {
       datariqi: ""
     }
   },
-
+  components: {
+    "mt-button": Button
+  },
   watch: {
     // $route (newVal, oldVal) {
     //   // $route 发生变化，我就请求后台数据
@@ -211,6 +233,27 @@ export default {
             i {
               transform: translate(180deg);
             }
+          }
+        }
+      }
+      .shopping {
+        background: white;
+        margin-top: px2rem(5);
+        display: flex;
+        .mint-button{
+          height:px2rem(49);
+          flex: 3.5;
+        }
+        .mui-numbox{
+          display: flex;
+           flex: 5;
+          .mui-numbox-input{
+            flex: 3;
+            width: px2rem(66);
+          }
+          .mui-btn{
+            flex: 1;
+            height: px2rem(49);
           }
         }
       }
