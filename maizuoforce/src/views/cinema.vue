@@ -1,5 +1,5 @@
 <template>
-  <div class="bigbox">
+  <div class="bigbox1">
     <div class="lx-head">
       <div class="floatmain">
         <div class="adress">
@@ -79,11 +79,12 @@ export default {
 html,
 body {
   height: 100%;
-  .bigbox {
+  .bigbox1 {
     display: flex;
     flex-direction: column;
     height: 100%;
     overflow-y: auto;
+    background: white;
     .lx-head {
       position: sticky;
       top: 0;
