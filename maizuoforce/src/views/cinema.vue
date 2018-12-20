@@ -10,7 +10,7 @@
           <i class="iconfont">&#xe633;</i>
         </div>
         <span class="maintitle">影院&emsp;&emsp;&emsp;</span>
-        <div class="iconfont search">&#xe6c0;</div>
+        <router-link tag="div" :to="{path:'/search'}" class="iconfont search">&#xe6c0;</router-link>
       </div>
       <div class="tabs">
         <ul>

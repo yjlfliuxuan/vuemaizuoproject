@@ -83,6 +83,12 @@ const router = new VueRouter({
       component: () => import('./views/citys.vue')
     },
     {
+      // 影院搜索页
+      path: '/search',
+      name: 'search',
+      component: () => import('./views/search.vue')
+    },
+    {
       // 9.9拼团
       path: '/pintuan',
       name: 'pintuan',
