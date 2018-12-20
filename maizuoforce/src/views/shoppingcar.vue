@@ -1,0 +1,125 @@
+<template>
+  <div class="shopcar">
+    <div class="lx-head">
+      <router-link
+        tag="span"
+        class="home"
+        :to="{path:'/films/nowPlaying'}"
+      >home</router-link>
+      <span class="car">购物车</span>
+      <span class="home">&nbsp;</span>
+    </div>
+    <div class="goodsdetail">
+      <table>
+        <tr>
+          <th>海报</th>
+          <th>名称</th>
+          <th>数量</th>
+          <th>操作</th>
+        </tr>
+        <tr v-for="(item,index) in filmlist" :key="index">
+          <td><img :src="item.filmposter"></td>
+          <td>{{item.filmName}}</td>
+          <td>{{item.filmNum}}</td>
+          <td>
+            <div class="mui-numbox">
+              <!-- "-"按钮，点击可减小当前数值 -->
+              <button
+                class="mui-btn mui-numbox-btn-minus"
+                type="button"
+              >-</button>
+              <input
+                class="mui-numbox-input"
+                type="number"
+                disabled
+              />
+              <!-- "+"按钮，点击可增大当前数值 -->
+              <button
+                class="mui-btn mui-numbox-btn-plus"
+                type="button"
+              >+</button>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</template>
+<script>
+import { Button } from 'mint-ui';
+export default {
+  name: 'shoppingcar',
+  components: {
+    "mt-button": Button
+  },
+  data () {
+    return {
+       filmlist: []
+    }
+  },
+  created () {
+    if (localStorage.getItem("filmsCard")) {
+      this.filmlist = JSON.parse(localStorage.getItem("filmsCard"))
+      console.log(this.filmlist);
+    }
+  }
+}
+</script>
+<style lang="scss">
+@import "../styles/common/px2rem.scss";
+html,
+body {
+  width: 100%;
+  height: 100%;
+  .shopcar {
+    width: 100%;
+    padding-left: px2rem(5);
+    .lx-head {
+      height: px2rem(44);
+      display: flex;
+      color: #000;
+      font-weight: 700;
+      font-size: px2rem(18);
+      justify-content: space-between;
+      .home {
+        width: 15%;
+        height: px2rem(44);
+        line-height: px2rem(44);
+        text-align: left;
+      }
+      .car {
+        width: 70%;
+        height: px2rem(44);
+        line-height: px2rem(44);
+        text-align: center;
+      }
+    }
+    .goodsdetail {
+      width: 100%;
+      table {
+        width: 100%;
+        text-align: center;
+        tr {
+          td {
+            width: 25%;
+            .mui-numbox {
+              width: 100%;
+              display: flex;
+              justify-content: flex-start;
+              .mui-numbox-input {
+                width: 43%;
+              }
+              .mui-btn {
+                width: 23%;
+              }
+            }
+            img {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+</style>

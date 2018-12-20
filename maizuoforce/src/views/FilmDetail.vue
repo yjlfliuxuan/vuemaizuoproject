@@ -37,7 +37,7 @@
         </div>
         <div class="shopping">
           <mt-button type="primary">立即购买</mt-button>
-          <mt-button type="danger">{{'购物车('+filmcardnum+')'}}</mt-button>
+          <mt-button type="danger" @click.native="changeroute">{{'购物车('+filmcardnum+')'}}</mt-button>
           <div class="mui-numbox">
             <!-- "-"按钮，点击可减小当前数值 -->
             <button
@@ -113,6 +113,10 @@ export default {
       'addFilmNum',
       'reduceFilmNum'
     ]),
+    changeroute () {
+      // 编程式导航
+       this.$router.replace("/shoppingcar");
+    },
     /**
 * 查找当前这个电影，在购物车中的数量
 * @param {Object} item 当前电影

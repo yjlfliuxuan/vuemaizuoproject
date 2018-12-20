@@ -67,6 +67,16 @@ const router = new VueRouter({
       }
     },
     {
+      //购物车页面
+      path: "/shoppingcar",
+      name: "shoppingcar",
+      component: () => import('./views/shoppingcar.vue'),
+      beforeEnter (to, from, next) {
+        console.log('进入购物车');
+        next();
+      }
+    },
+    {
       // 选择城市页
       path: '/citys',
       name: 'filmcitys',
@@ -108,7 +118,7 @@ const router = new VueRouter({
               })
             }
           }
-      },
+        },
         {
           path: 'balance',
           component: () => import(/* webpackChunkName: "balance" */ './views/balance.vue'),
@@ -130,27 +140,27 @@ const router = new VueRouter({
             }
           }
         },
-          {
-            path: 'set',
-            component: () => import(/* webpackChunkName: "set" */ './views/set.vue'),
-            beforeEnter (to, from, next) {
-              // 用没有登录
-              if (localStorage.getItem('userName')) {
-                next();
-              } else {
-                // 注意，如果需要实现，拦截到登陆页面之后，登录成功回跳到那个页面。
-                // localStorage.setItem('myNeedPage', '/user/set');
-                // next('/user/login');
-                //console.log(to.fullPath);
-                next({
-                  path: '/user/login',
-                  query: {
-                    redirect: to.fullPath
-                  }
-                })
-              }
+        {
+          path: 'set',
+          component: () => import(/* webpackChunkName: "set" */ './views/set.vue'),
+          beforeEnter (to, from, next) {
+            // 用没有登录
+            if (localStorage.getItem('userName')) {
+              next();
+            } else {
+              // 注意，如果需要实现，拦截到登陆页面之后，登录成功回跳到那个页面。
+              // localStorage.setItem('myNeedPage', '/user/set');
+              // next('/user/login');
+              //console.log(to.fullPath);
+              next({
+                path: '/user/login',
+                query: {
+                  redirect: to.fullPath
+                }
+              })
             }
-          },
+          }
+        },
         {
           path: 'login',
           component: () => import('./views/Login.vue')
