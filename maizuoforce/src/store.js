@@ -12,7 +12,7 @@ const store = new Vuex.Store({
   state: {
     // 当前定位的城市
     curCity: '深圳',
-
+    filmcardnum: 0,
     // 项目名称
     projectName: '卖座网',
      // card ,购物车数据票数
@@ -33,12 +33,15 @@ const store = new Vuex.Store({
      * 修改 当前定位的城市
      * @param {Object} state 就是当前 store实例的 state 属性
      * @param {Object} payload 参数 负载 接收页面$store.commit传过来的参数
-     */
+    */
     chgCurCity (state, payload) {
       state.curCity = payload.cityName;
     },
+    changetotalnum (state, payload) {
+      state.filmcardnum = payload
+    },
     /**
-  * 添加电影票数，
+  * 添加电影信息，
   * @param {Object} payload 添加的电影票
   *      filmId:   电影ID
   *      filmName: 电影名称
@@ -67,10 +70,11 @@ const store = new Vuex.Store({
           filmId: payload.filmId,
           filmName: payload.name,
           filmPrice: Math.random(10, 20),
-          filmNum: 1
+          filmNum: 1,
+          filmposter: payload.poster
         });
       }
-
+      ++state.filmcardnum;
       // 最后将数据写入到localstoarge
       localStorage.setItem('filmsCard', JSON.stringify(state.filmsCard));
 
@@ -103,7 +107,7 @@ const store = new Vuex.Store({
           state.filmsCard.splice(index, 1);
         }
       }
-
+      --state.filmcardnum;
       // 最后将数据写入到localstoarge
       localStorage.setItem('filmsCard', JSON.stringify(state.filmsCard));
     }

@@ -37,7 +37,7 @@
         </div>
         <div class="shopping">
           <mt-button type="primary">立即购买</mt-button>
-          <mt-button type="danger">加入购物车</mt-button>
+          <mt-button type="danger">{{'购物车('+filmcardnum+')'}}</mt-button>
           <div class="mui-numbox">
             <!-- "-"按钮，点击可减小当前数值 -->
             <button
@@ -104,7 +104,8 @@ export default {
   },
   computed: {
     ...mapState([
-      'filmsCard'
+      'filmsCard',
+      'filmcardnum'
     ])
   },
   methods: {
@@ -112,23 +113,29 @@ export default {
       'addFilmNum',
       'reduceFilmNum'
     ]),
-     /**
- * 查找当前这个电影，在购物车中的数量
- * @param {Object} item 当前电影
- */
-findNum (filmitem) {
-    let filmId = filmitem.filmId;
-    // 判断当前这个 filmId 在 store 中的 filmsCard 中存在不？
-    let num = 0;
+    /**
+* 查找当前这个电影，在购物车中的数量
+* @param {Object} item 当前电影
+*/
+    findNum (filmitem) {
+      let filmId = filmitem.filmId;
+      // 判断当前这个 filmId 在 store 中的 filmsCard 中存在不？
+      let num = 0;
 
-    this.filmsCard.forEach(item => {
-      if (item.filmId === filmId) {
-        num = item.filmNum;
-      }
-    });
-
-    return num;
-  },
+      this.filmsCard.forEach(item => {
+        if (item.filmId === filmId) {
+          num = item.filmNum;
+        }
+      });
+      return num;
+    },
+    gettotalNum () {
+      var filmcount = 0;
+      this.filmsCard.forEach(item => {
+        filmcount += Number(item.filmNum);
+      })
+      this.$store.commit("changetotalnum",filmcount)
+    },
     getFilmDetail () {
       console.log(this.$route.params.filmitem);
       this.filmitem = this.$route.params.filmitem;
@@ -155,8 +162,8 @@ findNum (filmitem) {
     // let filmId = this.$route.params.filmId;
     this.getFilmDetail();
     this.GetDates();
+    this.gettotalNum();
   },
-
   beforeRouteEnter (to, from, next) {
     console.log('进入到详情');
     next();
