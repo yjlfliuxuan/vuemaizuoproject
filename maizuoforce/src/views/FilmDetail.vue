@@ -43,15 +43,19 @@
             <button
               class="mui-btn mui-numbox-btn-minus"
               type="button"
+              @click.stop="reduceFilmNum(filmitem)"
             >-</button>
             <input
               class="mui-numbox-input"
               type="number"
+              disabled
+              :value="findNum(filmitem)"
             />
             <!-- "+"按钮，点击可增大当前数值 -->
             <button
               class="mui-btn mui-numbox-btn-plus"
               type="button"
+              @click.stop="addFilmNum(filmitem)"
             >+</button>
           </div>
         </div>
@@ -79,6 +83,7 @@
 </template>
 <script>
 import { Button } from 'mint-ui';
+import { mapMutations, mapState } from 'vuex';
 export default {
   name: 'FilmDetail',
 
@@ -97,11 +102,37 @@ export default {
     //   this.getFilmDetail();
     // }
   },
-
+  computed: {
+    ...mapState([
+      'filmsCard'
+    ])
+  },
   methods: {
+    ...mapMutations([
+      'addFilmNum',
+      'reduceFilmNum'
+    ]),
+     /**
+ * 查找当前这个电影，在购物车中的数量
+ * @param {Object} item 当前电影
+ */
+findNum (filmitem) {
+    let filmId = filmitem.filmId;
+    // 判断当前这个 filmId 在 store 中的 filmsCard 中存在不？
+    let num = 0;
+
+    this.filmsCard.forEach(item => {
+      if (item.filmId === filmId) {
+        num = item.filmNum;
+      }
+    });
+
+    return num;
+  },
     getFilmDetail () {
       console.log(this.$route.params.filmitem);
       this.filmitem = this.$route.params.filmitem;
+      this.filmitem.num = 0;
     },
     GetDates () {
       var riqi = new Date(this.$route.params.filmitem.premiereAt * 1000);
@@ -240,18 +271,18 @@ export default {
         background: white;
         margin-top: px2rem(5);
         display: flex;
-        .mint-button{
-          height:px2rem(49);
+        .mint-button {
+          height: px2rem(49);
           flex: 3.5;
         }
-        .mui-numbox{
+        .mui-numbox {
           display: flex;
-           flex: 5;
-          .mui-numbox-input{
+          flex: 5;
+          .mui-numbox-input {
             flex: 3;
             width: px2rem(66);
           }
-          .mui-btn{
+          .mui-btn {
             flex: 1;
             height: px2rem(49);
           }
