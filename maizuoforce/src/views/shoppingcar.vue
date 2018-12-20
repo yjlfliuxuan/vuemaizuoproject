@@ -17,7 +17,10 @@
           <th>数量</th>
           <th>操作</th>
         </tr>
-        <tr v-for="(item,index) in filmlist" :key="index">
+        <tr
+          v-for="(item,index) in filmsCard"
+          :key="index"
+        >
           <td><img :src="item.filmposter"></td>
           <td>{{item.filmName}}</td>
           <td>{{item.filmNum}}</td>
@@ -27,16 +30,19 @@
               <button
                 class="mui-btn mui-numbox-btn-minus"
                 type="button"
+                @click.stop="reduceFilmNum(item)"
               >-</button>
               <input
                 class="mui-numbox-input"
                 type="number"
                 disabled
+                :value="item.filmNum"
               />
               <!-- "+"按钮，点击可增大当前数值 -->
               <button
                 class="mui-btn mui-numbox-btn-plus"
                 type="button"
+                @click.stop="addFilmNum(item)"
               >+</button>
             </div>
           </td>
@@ -47,6 +53,7 @@
 </template>
 <script>
 import { Button } from 'mint-ui';
+import { mapMutations, mapState } from 'vuex';
 export default {
   name: 'shoppingcar',
   components: {
@@ -54,14 +61,26 @@ export default {
   },
   data () {
     return {
-       filmlist: []
+      filmlist: []
+    }
+  },
+  computed: {
+    ...mapState([
+      'filmsCard',
+      'filmcardnum'
+    ])
+  },
+  methods: {
+    ...mapMutations([
+      'addFilmNum',
+      'reduceFilmNum'
+    ]),
+    changeroute () {
+      // 编程式导航
+      this.$router.replace("/shoppingcar");
     }
   },
   created () {
-    if (localStorage.getItem("filmsCard")) {
-      this.filmlist = JSON.parse(localStorage.getItem("filmsCard"))
-      console.log(this.filmlist);
-    }
   }
 }
 </script>

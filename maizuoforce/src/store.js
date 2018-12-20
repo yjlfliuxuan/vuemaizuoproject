@@ -99,6 +99,7 @@ const store = new Vuex.Store({
         // 大于才是有
         // state.filmsCard.splice(index, 1);
         let film = state.filmsCard[index];
+        --state.filmcardnum;
         if (film.filmNum > 1) {
           // 减一
           film.filmNum--;
@@ -107,7 +108,6 @@ const store = new Vuex.Store({
           state.filmsCard.splice(index, 1);
         }
       }
-      --state.filmcardnum;
       // 最后将数据写入到localstoarge
       localStorage.setItem('filmsCard', JSON.stringify(state.filmsCard));
     }
