@@ -9,14 +9,14 @@
       <span class="car">购物车</span>
       <span class="home">&nbsp;</span>
     </div>
+    <ul>
+      <li>海报</li>
+      <li>名称</li>
+      <li>数量</li>
+      <li>操作</li>
+    </ul>
     <div class="goodsdetail">
       <table>
-        <tr>
-          <th>海报</th>
-          <th>名称</th>
-          <th>数量</th>
-          <th>操作</th>
-        </tr>
         <tr
           v-for="(item,index) in filmsCard"
           :key="index"
@@ -94,6 +94,9 @@ body {
     width: 100%;
     padding-left: px2rem(5);
     .lx-head {
+      position: sticky;
+      top: 0;
+      background: white;
       height: px2rem(44);
       display: flex;
       color: #000;
@@ -111,6 +114,20 @@ body {
         height: px2rem(44);
         line-height: px2rem(44);
         text-align: center;
+      }
+    }
+    ul{
+      position: sticky;
+      top: px2rem(44);
+      background: white;
+      display: flex;
+      justify-content: space-between;
+      li{
+        flex: 1;
+         display: inline-block;
+         height: px2rem(44);
+         line-height: px2rem(44);
+         text-align: center;
       }
     }
     .goodsdetail {

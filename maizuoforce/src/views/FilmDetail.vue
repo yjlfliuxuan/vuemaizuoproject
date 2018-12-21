@@ -36,7 +36,7 @@
           </div>
         </div>
         <div class="shopping">
-          <mt-button type="primary">立即购买</mt-button>
+          <mt-button type="primary" @click.native="changeroute">立即购买</mt-button>
           <mt-button type="danger" @click.native="changeroute">{{'购物车('+filmcardnum+')'}}</mt-button>
           <div class="mui-numbox">
             <!-- "-"按钮，点击可减小当前数值 -->
